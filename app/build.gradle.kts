@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.caiofaustino.starter"
+    namespace = ProjectConfig.APP_ID
     compileSdk = ProjectConfig.COMPILE_SDK
 
     defaultConfig {
