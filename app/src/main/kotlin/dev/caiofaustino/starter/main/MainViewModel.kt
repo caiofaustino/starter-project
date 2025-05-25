@@ -3,6 +3,7 @@ package dev.caiofaustino.starter.main
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import dev.caiofaustino.mvi.MviStore
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.scan
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 private const val UI_STATE = "MAIN_UI_STATE"
 
@@ -38,7 +40,9 @@ class MainViewModel(
             )
 
     fun onUserAction(userAction: MainAction) {
-        processor.process(userAction)
+        viewModelScope.launch {
+            processor.process(userAction)
+        }
     }
 
     override fun onCleared() {
