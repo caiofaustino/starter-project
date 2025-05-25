@@ -1,5 +1,5 @@
 [versions]
-junit = "4.13.2"
+junit = "4.13.2" # TODO: upgrade to JUNIT 5
 
 [libraries]
 # Tests
